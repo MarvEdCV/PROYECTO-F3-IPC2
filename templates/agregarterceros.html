@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/agregarterceros.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h1>Agregar cuenta de tercero</h1>
+		<label class="datost">Seleccione tipo de cuenta:</label>
+		<select class="datost">
+		  	 <option>cuenta Monetaria</option>
+			 <option>cuenta Ahorro</option>
+			 <option>cuenta Plzao fijo</option>
+			</select>
+		<label class="datost">Ingrese número de cuenta</label>
+		<input class="datost" type="text" name="cuenta">
+		<button class="bt">Agregar</button>
+	</section>
+
+</body>
+</html>

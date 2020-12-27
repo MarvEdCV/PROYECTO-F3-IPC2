@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/preautorizacion.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h1>Pre-autorización de cheques</h1>
+		<label class="datost">Seleccione cuenta monetaria:</label>
+		<select class="datost">
+		  	 <option>cuenta monetaria 1</option>
+			 <option>cuenta monetaria 2</option>
+			 <option>cuenta monetaria 3</option>
+			</select>
+		<label class="datost">Ingrese numero de cheque</label>
+		<input class="datost" type="text" name="cheque">
+		<label class="datost">Monto:</label>
+		<input class="datost" type="text" name="monto">
+		<label class="datost">Nombre de la persona emitida</label>
+		<input class="datost" type="text" name="nombre">
+		<button class="bt">Pre-autorizar</button>
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/suspendercuenta.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h1>Suspender cuenta</h1>
+		<label class="datost">Seleccione cuenta a suspender:</label>
+		<select class="datost">
+		  	 <option>cuenta activa 1</option>
+			 <option>cuenta activa 2</option>
+			 <option>cuenta activa 3</option>
+			</select>
+		<button class="bt">Suspender</button>
+	</section>
+
+</body>
+</html>

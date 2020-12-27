@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="http://127.0.0.1:8000/adminoperaciones/">Menu</a>
+				<a href="http://127.0.0.1:8000/adminCrearCliente/">Crear cliente individual</a>
+				<a href="http://127.0.0.1:8000/Crearclienteemp/">Crear cliente empresarial</a>
+				<a href="http://127.0.0.1:8000/CrearMonetaria/">Crear cuenta de monetaria</a>
+				<a href="http://127.0.0.1:8000/CrearAhorro/">Crear cuenta de ahorro</a>
+				<a href="http://127.0.0.1:8000/CrearPF/">Crear cuenta de ahorroPF</a>
+				<a href="#">Cobrar cheque</a>
+				<a href="#">Crear chequera</a>
+				<a href="#">Hacer deposito</a>
+				<a href="#">Desbloquear usuario</a>
+				<a href="http://127.0.0.1:8000/">Banca virtual</a>
+			</nav>
+
+		</header>
+	<section class="login">
+		<h4>CREAR CLIENTE EMPRESARIAL</h4>
+		<form method="POST">
+		{{ form1.as_p}}
+			{% csrf_token %}
+		<button class="datat" type="submit">Ingresar</button>
+	</form>
+		<h4>{{ mensaje }}</h4>
+	</section>
+</body>
+</html>

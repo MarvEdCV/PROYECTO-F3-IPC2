@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/strcuentas.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+
+		</header>
+	<section class="CuentasPr">
+		<h1>Transferencia Cuentas de terceros</h1>
+		<div class="comp">
+			<label class="CO">Seleccione cuenta de origen:</label>
+			<select class="CO">
+				<option>cuenta monetaria 1</option>
+				<option>cuenta monetaria 2</option>
+				<option>cuenta monetaria 3</option>
+		    </select>
+		<label class="CO">Seleccione cuenta destino:</label>
+
+		<select class="CO">
+			 <option>cuenta monetaria 1</option>
+			 <option>cuenta monetaria 2</option>
+			 <option>cuenta monetaria 3</option>
+		</select>
+		<label class="CO">Monto a transferir:</label>
+		<input class="CO" type="text" name="monto">
+		<button class="BT">Transferir</button>
+
+		</div>
+
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Agency FB', sans-serif;
+
+}header{
+  font-size:16px;
+  background: #1D1D1F  ;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #fff;
+
+  /*Flex*/
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+header nav{
+  width:50%;
+
+  /*flex*/
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+header nav a{
+  text-decoration: none;
+  text-align: center;
+  padding:10px;
+  color: #fff;
+
+  /*flex*/
+  flex-grow:1;
+}
+header nav a:hover{
+  border-bottom: 2px solid #fff;
+  padding-bottom: 3px;
+
+}
+body{
+  background: #1D1D1F;
+  color: white;
+}
+.CuentasPr{
+width: 325px;
+  background: #24303c;
+  padding: 50px;
+  margin: auto;
+  margin-top: 12%;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+}
+.comp{
+
+	display: flex;
+	flex-direction: column;
+}
+h1{
+	text-align: center;
+	margin-bottom: 10px;
+}
+.CO{
+	font-size: 18px;
+	height: 25px;
+	margin-bottom: 5px;
+}
+.BT{
+	font-size: 18px;
+	height: 25px;
+	margin-top: 10px;
+	width: 70px;
+	text-align: center;
+	margin-left: 40%;
+}

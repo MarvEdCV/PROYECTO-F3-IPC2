@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/estadodecuenta.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h1>Estado de cuenta</h1>
+		<label class="datost">Seleccione cuenta:</label>
+		<select class="datost">
+		  	 <option>cuenta 1</option>
+			 <option>cuenta 2</option>
+			 <option>cuenta 3</option>
+			</select>
+		<button class="bt">Consultar</button>
+		<table class="table">
+  		<h4>Resumen</h4>
+  		<tr>
+  			<th class="datos">Tipo de movimiento</th>
+  			<th class="datos">Monto de movimiento</th>
+  			<th class="datos">Fecha</th>
+  		</tr>
+  		<tr>
+  			<td class="datos">Transacción</td>
+  			<td class="datos">1500</td>
+  			<td class="datos">15/12/2020</td>
+  		</tr>
+  		<tr>
+  			<td class="datos">Depósito</td>
+  			<td class="datos">5000</td>
+  			<td class="datos">5/12/2020</td>
+  		</tr>
+  	</table>
+	</section>
+
+</body>
+</html>

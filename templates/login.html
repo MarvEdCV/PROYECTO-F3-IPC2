@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="http://127.0.0.1:8000/adminlogin/">Administrador</a>
+				<a href="http://127.0.0.1:8000/">Banca virtual</a>
+			</nav>
+
+		</header>
+	<section class="login">
+		<h4>Inicio de sesión</h4>
+		<div class="data">
+			<input class="datat" type="text" placeholder="Ingrese código de usuario">
+    		<input class="datat" type="password" placeholder="Ingrese contraseña">
+		</div>
+		<button class="datat">Ingresar</button>
+	</section>
+
+</body>
+</html>

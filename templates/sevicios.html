@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/servicios.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h1>Pagos de servicios</h1>
+		<h3>Pago de luz</h3>
+		<label class="datost">Seleccione número de contador eléctrico</label>
+		<select class="datost">
+		  	 <option>contador electronico 1</option>
+			 <option>contador electronico 2</option>
+			 <option>contador electronico 3</option>
+			</select>
+		<button class="bt">Pagar luz</button>
+		<h3>Pago de agua</h3>
+		<label class="datost">Seleccione número de contador de agua potable</label>
+		<select class="datost">
+		  	 <option>contador de agua potable 1</option>
+			 <option>contador de agua potable 2</option>
+			 <option>contador de agua potable 3</option>
+			</select>
+		<button class="bt">Pagar agua</button>
+		<h3>Pago de telefono</h3>
+		<label class="datost">Seleccione número de teléfono</label>
+		<select class="datost">
+		  	 <option>Número de telefono 1</option>
+			 <option>Número de telefono 2</option>
+			 <option>Número de telefono 3</option>
+			</select>
+		<button class="bt">Pagar teléfono</button>
+
+
+
+	</section>
+
+</body>
+</html>

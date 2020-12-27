@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/soperaciones.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="#">Agregar terceros</a>
+			</nav>
+
+		</header>
+	<section class="operaciones">
+		<h1>Gestor de operaciones</h1>
+		<div class="transacciones">
+			<label class="datost" >Tipo de transacción:</label>
+			<select class="datost">
+		  	<option>Transacción entre cuentas propias</option>
+		  	<option>Transacción a terceros</option>
+			</select>
+			<button class="bt">Ir</button>
+
+			<button class="datos">Pre-Autorización de cheques</button>
+			<button class="datos">Pagos de plantillas y proveedores</button>
+			<label class="datost">Pagos de servicios:</label>
+			<select class="datost">
+		  	<option>Pago de luz</option>
+		  	<option>Pago de agua</option>
+		  	<option>Pago de telefono</option>
+			</select>
+			<button class="bt">Ir</button>
+			<button class="datos">Solicitar prestamo</button>
+			<button class="datos">Estado de Cuenta</button>
+			<button class="datos">Agregar terceros</button>
+			<button class="datos">Suspender cuenta</button>
+			<button class="datos">Reactivación de cuenta</button>
+		</div>
+	</section>
+</body>
+</html>
