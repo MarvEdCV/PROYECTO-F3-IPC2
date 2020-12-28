@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from .forms import *
 import MySQLdb
 from django.db.models import Q
 # Create your views here.
 
+idtemporal = 0
 host = 'localhost'
 db_name = 'Banca'
 user = 'root'
@@ -116,33 +118,50 @@ def Crearclienteemp(request):
         else:
             print('dader')
     return render(request,'adminCrearClienteemp.html',variable)
-def intermedia1(request):
-    lista = Intermedia.objects.all().values()
-    lista2 = []
-    for a in lista:
-        lista2.append((a.get('idusuario'), a.get('contra'),a.get('cui'),a.get('idusuarioemp'),a.get('deuda')))
-    print(lista2)
-    form = Intermedia()
-    form.fields['idusuario'].choises = lista2
-    a = {
-        "form": form,
-    }
-    '''if request.method == 'POST':
-        form = Intermedia1(data = request.POST)
-        if form.is_valid():
-            form = Intermedia1()
-            form.fields['idprueba'].choices = lista2
-            a={
-                "form": form,
-            }'''
 
+def intermedia(request):
+    db = MySQLdb.connect(host=host, user=user, password=contra, db=db_name, connect_timeout=30)
+    c = db.cursor()
 
-    return render(request,'adminintermedia.html',a)
+    if request.method == 'POST':
+        idUsuario = request.POST['idUsuario']
+        diccionario = {}
+        diccionario.update(idUsuario = idUsuario)
+        variableSesion = request.session['dato'] = diccionario
+        marca = request.POST['marca']
+        consult = Usuario.objects.filter(idusuario=idUsuario).values_list()
+        if consult[0][5] < 3:
+            contador = consult[0][5]+1
+            consulta = "insert into TARJETADECREDITO(idUsuario,marca) values("+idUsuario+",'"+marca+"')"
+            c.execute(consulta)
+            update  = "update USUARIO set cantidadtarjetas="+str(contador)+" where idUsuario ="+idUsuario
+            c.execute(update)
+            db.commit()
+            if marca == 'puntos':
+                return redirect('prueba')
+            elif marca == 'cashback':
+                return render(request,'creartarjetacashback.html')
+        elif consult[0][5] > 2:
+            c.execute("select idUsuario from usuario")
+            list = []
+            for a in c:
+                list.append(a[0])
+            return render(request, 'adminintermedia.html', {'list': list})
+    else:
+        c.execute("select idUsuario from usuario")
+        list = []
+        for a in c:
+            list.append(a[0])
+        return render(request, 'adminintermedia.html', {'list': list})
 
-def crearMonetaria(request):
-    return render(request,'CrearMonetaria.html')
-def crearAhorro(request):
-    return render(request,'CrearAhorro.html')
-def crearPF(request):
-    return render(request,'CrearPlazoFijo.html')
+def crearpuntos(request):
+    diccionario = request.session['dato']
+    usuario = diccionario.get('idUsuario')
+    db = MySQLdb.connect(host=host, user=user, password=contra, db=db_name, connect_timeout=30)
+    c = db.cursor()
+    if request.method == 'POST':
+        print('holasers')
+    return render(request,'creartarjetapuntos.html',{'mensaje': 'hola'})
 
+def crearcashback(request):
+    return render(request,'creartarjetacashback.html')

@@ -16,7 +16,7 @@ class CrearClienteEmpresarial(forms.ModelForm):
         model = Usuarioempresarial
         fields = ("tipoempresa","nombre","nombrecomercial","nombresrepresentante","apellidosrepresentante")
 
-class Intermedia(forms.ModelForm):
+class creartarjetapuntos(forms.ModelForm):
     class Meta:
-        model = Cuenta
-        fields = ("idusuario","tipomoneda","estaactiva")
+        model =
+

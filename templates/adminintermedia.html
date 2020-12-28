@@ -10,8 +10,16 @@
 	<section class="login">
 		<h4>CREAR CUENTA</h4>
 		<form method="POST">
-		{{ form.as_p}}
 			{% csrf_token %}
+			<select name="idUsuario">
+				{% for op in list %}
+					<option value="{{ op }}">{{ op }}</option>
+				{% endfor %}
+			</select>
+			<select name="marca">
+					<option value="puntos">Puntos</option>
+					<option value="cashback">Cashback</option>
+			</select>
 		<button class="datat" type="submit">Ingresar</button>
 	</form>
 	</section>
