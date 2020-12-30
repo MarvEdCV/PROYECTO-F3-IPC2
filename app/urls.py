@@ -19,7 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.login),
-    path('operaciones/',views.operaciones),
+    path('operaciones/',views.operaciones,name='ope'),
     path('transCP/',views.trcuentapropia),
     path('transCT/',views.trcuentaterceros),
     path('preautorizacion/',views.preautorizacion),

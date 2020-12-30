@@ -18,13 +18,17 @@
 
 		</header>
 	<section class="login">
-		<h4>Inicio de sesión</h4>
-		<div class="data">
-			<input class="datat" type="text" placeholder="Ingrese código de usuario">
-    		<input class="datat" type="password" placeholder="Ingrese contraseña">
-		</div>
-		<button class="datat">Ingresar</button>
+		<h4>INICIO DE SESION</h4>
+		<form method="POST">
+			{% csrf_token %}
+			<select name="idUsuario">
+				{% for op in list %}
+					<option value="{{ op }}">{{ op }}</option>
+				{% endfor %}
+			</select>
+			{{form.as_p}}
+		<button class="datat" type="submit">Ingresar</button>
+	</form>
 	</section>
-
 </body>
 </html>
