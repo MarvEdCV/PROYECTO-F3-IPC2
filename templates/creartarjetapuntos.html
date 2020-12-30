@@ -27,11 +27,13 @@
 		</header>
 	<section class="login">
 		<h4>CREAR TARJETA PREFEPUNTOS</h4>
+		<h5>limte en quetzales</h5>
 		<form method="POST">
-			<h6>{{mensaje}}</h6>
+			{{ form.as_p}}
 			{% csrf_token %}
 		<button class="datat" type="submit">Ingresar</button>
 	</form>
+		<h6>{{mensaje}}</h6>
 	</section>
 </body>
 </html>

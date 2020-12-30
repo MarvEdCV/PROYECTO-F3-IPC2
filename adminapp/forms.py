@@ -18,5 +18,6 @@ class CrearClienteEmpresarial(forms.ModelForm):
 
 class creartarjetapuntos(forms.ModelForm):
     class Meta:
-        model =
+        model = Tarjetadepuntos
+        fields =("limite","puntos")
 

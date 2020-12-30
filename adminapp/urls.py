@@ -9,5 +9,5 @@ urlpatterns = [
     path('Crearclienteemp/',views.Crearclienteemp),
     path('intermedia/',views.intermedia),
     path('tarjetapuntos/',views.crearpuntos,name='prueba'),
-    path('tarjetacashback/',views.crearcashback),
+    path('tarjetacashback/',views.crearcashback,name='cashback'),
 ]
