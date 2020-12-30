@@ -21,3 +21,8 @@ class creartarjetapuntos(forms.ModelForm):
         model = Tarjetadepuntos
         fields =("limite","puntos")
 
+class creartarjetacashback(forms.ModelForm):
+    class Meta:
+        model = Tarjetadecashback
+        fields =("limite","cashback")
+

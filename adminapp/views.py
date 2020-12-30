@@ -273,4 +273,119 @@ def crearpuntos(request):
     return render(request,'creartarjetapuntos.html',variablex)
 
 def crearcashback(request):
-    return render(request,'creartarjetacashback.html')
+    diccionario = request.session['dato']
+    usuario = diccionario.get('idUsuario')
+    numero = Usuario.objects.filter(idusuario=usuario).values_list()
+    consult = Tarjetadecredito.objects.filter(idusuario=usuario).values_list()[numero[0][5] - 1]
+    db = MySQLdb.connect(host=host, user=user, password=contra, db=db_name, connect_timeout=30)
+    c = db.cursor()
+    form = creartarjetacashback()
+    mensaje = ''
+    variablex = {
+        "form": form,
+        "mensaje": mensaje
+    }
+    if request.method == 'POST':
+        form = creartarjetacashback(data=request.POST)
+        if form.is_valid():
+            datos = form.cleaned_data
+            limite = datos.get("limite")
+            puntos = datos.get("cashback")
+            if numero[0][2] != None:
+                if numero[0][5] == 1 and limite > 5000 and limite < 7000:
+                    insert1 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert1)
+                    form = creartarjetacashback()
+                    mensaje = 'PRIMERA tarjeta CASHBACK INDIVIDUAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                elif numero[0][5] == 2 and limite >= 4500 and limite <= 5500:
+                    insert11 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert11)
+                    form = creartarjetacashback()
+                    mensaje = 'SEGUNDA tarjeta CASHBACK INDIVIDUAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                elif numero[0][5] == 3 and limite >= 3500 and limite <= 4000:
+                    insert111 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert111)
+                    form = creartarjetacashback()
+                    mensaje = 'TERCERA tarjeta CASHBACK INDIVIDUAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                else:
+                    form = creartarjetacashback()
+                    if numero[0][5] == 1:
+                        mensaje = 'PRIMERA TARJETA CASHBACK INDIVIDUAL CON LIMITE FUERA DE RANGO'
+                    if numero[0][5] == 2:
+                        mensaje = 'SEGUNDA TARJETA CASHBACK INDIVIDUAL CON LIMITE FUERA DE RANGO'
+                    if numero[0][5] == 3:
+                        mensaje = 'TERCERA TARJETA CASHBACK INDIVIDUAL CON LIMITE FUERA DE RANGO'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+
+            if numero[0][3] != None:
+                if numero[0][5] == 1 and limite > 10000 and limite < 15000:
+                    insert1 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert1)
+                    form = creartarjetacashback()
+                    mensaje = 'PRIMERA tarjeta CASHBACK EMPRESARIAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                elif numero[0][5] == 2 and limite >= 12000 and limite <= 17000:
+                    insert11 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert11)
+                    form = creartarjetacashback()
+                    mensaje = 'SEGUNDA tarjeta CASHBACK EMPRESARIAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                elif numero[0][5] == 3 and limite >= 15000 and limite <= 19000:
+                    insert111 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
+                        consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
+                    c.execute(insert111)
+                    form = creartarjetacashback()
+                    mensaje = 'TERCERA tarjeta CASHBACK EMPRESARIAL creada con exito'
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+                else:
+                    form = creartarjetacashback()
+                    if numero[0][5] == 1:
+                        mensaje = 'PRIMERA TARJETA CASHBACK EMPRESARIAL CON LIMITE FUERA DE RANGO'
+                    if numero[0][5] == 2:
+                        mensaje = 'SEGUNDA TARJETA CASHBACK EMPRESARIAL CON LIMITE FUERA DE RANGO'
+                    if numero[0][5] == 3:
+                        mensaje = 'TERCERA TARJETA CASHBACK EMPRESARIAL CON LIMITE FUERA DE RANGO'
+
+                    variablex = {
+                        "form": form,
+                        "mensaje": mensaje
+                    }
+            db.commit()
+            c.close()
+        else:
+            mensaje = 'Datos incompatibles'
+            form = creartarjetacashback()
+            variablex = {
+                "form": form,
+                "mensaje": mensaje
+            }
+    return render(request,'creartarjetacashback.html',variablex)
