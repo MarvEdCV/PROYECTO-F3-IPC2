@@ -83,6 +83,20 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+class Compratarjeta(models.Model):
+    id_compra = models.AutoField(primary_key=True)
+    fechacompra = models.DateField(blank=True, null=True)
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario', blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(max_length=60, blank=True, null=True)
+    monto = models.DecimalField(max_digits=15, decimal_places=2, blank=True, null=True)
+    numerotarjeta = models.ForeignKey('Tarjetadecredito', models.DO_NOTHING, db_column='numerotarjeta', blank=True, null=True)
+    moneda = models.CharField(max_length=1, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'compratarjeta'
+
+
 class Cuenta(models.Model):
     numerocuenta = models.AutoField(primary_key=True)
     idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario', blank=True, null=True)  # Field name made lowercase.
