@@ -96,6 +96,7 @@ foreign key(idUsuario)references USUARIO(idUsuario),
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
 
+/*DELETES*/
 #drop table usuario;
 #drop table USUARIOEMPRESARIAL;
 #drop table usarioindividual;
@@ -104,21 +105,15 @@ foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 #drop table tarjetadecashback;
 #drop table compratarjeta;
 
-/*PRUEBAS*/
-update usuario set cantidadtarjetas = 0 where idusuario !=0;
-insert into USUARIO(cantidadtarjetas) values(1);
-desc usuario;
 
 select * from tarjetadecredito where idUsuario=2;
 select * from usuario;	
 select * from tarjetadecredito;
 select * from tarjetadecashback;
-select * from tarjetadepuntos;
+select * from tarjetadepuntos;  
 select * from compratarjeta;
 select * from cuenta where idUsuario=1;
-insert into TARJETADECREDITO(idUsuario,marca) values(3,'puntos');
 
-use banca;
-select * from usuario;
+
 
 
