@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" />
+</head>
+<body>
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="http://127.0.0.1:8000/operaciones/">Inicio</a>
+				<a href="#">Tansacciones</a>
+				<a href="#">Pagos de planillas y proveedores</a>
+				<a href="#">Pagos de servicios</a>
+				<a href="#">Prestamos</a>
+				<a href="#">Estados de cuenta</a>
+				<a href="http://127.0.0.1:8000/estadotarjeta/">Estado de tarjeta</a>
+			</nav>
+
+		</header>
+	<section class="login">
+		<h4>ESTADO TARJETA</h4>
+		<h6>Seleccione numero de tarjeta</h6>
+		<form method="POST">
+			{% csrf_token %}
+			<select name="tarjeta">
+				{% for op in list %}
+					<option value="{{ op }}">{{ op }}</option>
+				{% endfor %}
+			</select>
+
+		<button class="datat" type="submit">Ver estado</button>
+	</form>
+		<h6>{{a}}</h6>
+		<h6>{{marca}}</h6>
+		<h6>{{b}}</h6>
+		<h6>{{ser}}</h6>
+		<h6>{{serd}}</h6>
+	</section>
+</body>
+</html>
