@@ -82,26 +82,48 @@ foreign key(idUsuario)references USUARIO(idUsuario)
 
 create table TARJETADEPUNTOS(
 numerotarjeta int primary key,
-limite decimal(6,3),
-puntos decimal(35,3),
+limite decimal(15,3),
+puntos decimal(35,3) default 0,
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
+insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(1,250,120);
 
 create table TARJETADECASHBACK(
 numerotarjeta int primary key,
-limite decimal(6,3),
-cashback decimal(35,3),
+limite decimal(15,3),	
+cashback decimal(35,3) default 0,
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
+
+create table COMPRATARJETA(
+id_compra int auto_increment primary key,
+fechacompra date,
+idUsuario int,
+descripcion varchar(60),
+monto decimal(15,2),
+numerotarjeta int,
+moneda enum('Q','$'),
+foreign key(idUsuario)references USUARIO(idUsuario),
+foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
+);
+
 
 drop table tarjetadecredito;
 drop table tarjetadepuntos;
 drop table tarjetadecashback;
 
 /*PRUEBAS*/
-select * from usuario;
-select * from cuenta where idUsuario=1;
+update usuario set cantidadtarjetas = 0 where idusuario !=0;
+insert into USUARIO(cantidadtarjetas) values(1);
+desc usuario;
 
+select * from tarjetadecredito where idUsuario=2;
+select * from usuario;	
+select * from tarjetadecredito;
+select * from tarjetadecashback;
+select * from tarjetadepuntos;
+select * from cuenta where idUsuario=1;
+insert into TARJETADECREDITO(idUsuario,marca) values(3,'puntos');
 
 
 
