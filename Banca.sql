@@ -1,14 +1,12 @@
 create database Banca;
 use Banca;
-
+drop database banca;
 create table ADMINISTRADOR(
 Nombre varchar(15) not null,
 contra varchar(20) not null,
 primary key(Nombre)
 );
 insert into ADMINISTRADOR(Nombre,contra) values('admin','admin');
-select * from clienteindividual;
-
 
 create table USUARIOINDIVIDUAL(
 CUI bigint(20) primary key,
@@ -31,22 +29,20 @@ idUsuario int auto_increment primary key,
 contra varchar(20),
 CUI bigint(20),
 idUsuarioemp int,
+deuda decimal(65,3),
+cantidadtarjetas int(1) default 0,
 foreign key (CUI) references USUARIOINDIVIDUAL(CUI),
 foreign key (idUsuarioemp) references USUARIOEMPRESARIAL(idUsuarioemp)
 );
-alter table USUARIO add deuda decimal(65,3);
-alter table USUARIO add cantidadtarjetas int(1);
-alter table USUARIO modify cantidadtarjetas int(1) default 0;
-DESC USUARIO;
 
 create table CUENTA(
 numerocuenta int auto_increment primary key,
 idUsuario int,
 tipomoneda enum('Q','$'),
 estaActiva enum('si','no'),
+tipocuenta enum('ahorro','monetaria','plazo fijo'),
 foreign key(idUsuario)references USUARIO(idUsuario)
 );
-alter table cuenta add tipocuenta enum('ahorro','monetaria','plazo fijo');
 
 create table CUENTAMONETARIA(
 numerocuenta int primary key,
@@ -61,10 +57,6 @@ interes int,
 saldo decimal(35,3),
 foreign key(numerocuenta) references CUENTA(numerocuenta)
 );
-
-insert into cuenta(idUsuario,tipomoneda,estaActiva,tipocuenta) values(1,'Q','si','ahorro');
-insert into cuentaahorro values(2,2,50484.50);
-
 create table CUENTAPF(
 numerocuenta int primary key,
 interes int,	
@@ -86,15 +78,12 @@ limite decimal(15,3),
 puntos decimal(35,3) default 0,
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
-insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(1,250,120);
-
 create table TARJETADECASHBACK(
 numerotarjeta int primary key,
 limite decimal(15,3),	
 cashback decimal(35,3) default 0,
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
-
 create table COMPRATARJETA(
 id_compra int auto_increment primary key,
 fechacompra date,
@@ -107,10 +96,13 @@ foreign key(idUsuario)references USUARIO(idUsuario),
 foreign key(numerotarjeta) references TARJETADECREDITO(numerotarjeta)
 );
 
-
-drop table tarjetadecredito;
-drop table tarjetadepuntos;
-drop table tarjetadecashback;
+#drop table usuario;
+#drop table USUARIOEMPRESARIAL;
+#drop table usarioindividual;
+#drop table tarjetadecredito;
+#drop table tarjetadepuntos;
+#drop table tarjetadecashback;
+#drop table compratarjeta;
 
 /*PRUEBAS*/
 update usuario set cantidadtarjetas = 0 where idusuario !=0;
@@ -122,9 +114,11 @@ select * from usuario;
 select * from tarjetadecredito;
 select * from tarjetadecashback;
 select * from tarjetadepuntos;
+select * from compratarjeta;
 select * from cuenta where idUsuario=1;
 insert into TARJETADECREDITO(idUsuario,marca) values(3,'puntos');
 
-
+use banca;
+select * from usuario;
 
 

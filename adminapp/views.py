@@ -178,7 +178,7 @@ def crearpuntos(request):
                     insert1 = "insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)
-                    #form = creartarjetapuntos()
+                    # form = creartarjetapuntos()
                     mensaje = 'PRIMERA tarjeta INDIVIDUAL creada con exito'
                     variablex = {
                         "form": form,
@@ -222,7 +222,7 @@ def crearpuntos(request):
                     insert1 = "insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)
-                    #form = creartarjetapuntos()
+                    # form = creartarjetapuntos()
                     mensaje = 'PRIMERA tarjeta EMPRESARIAL creada con exito'
                     variablex = {
                         "form": form,
@@ -388,4 +388,4 @@ def crearcashback(request):
                 "form": form,
                 "mensaje": mensaje
             }
-    return render(request,'creartarjetacashback.html',variablex)
+    return render(request, 'creartarjetacashback.html', variablex)

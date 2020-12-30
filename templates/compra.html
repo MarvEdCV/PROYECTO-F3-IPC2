@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Banca Electrónica - El Ahorro </title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" />
 </head>
 <body>
-
+	<header>
+			<div class="logo">
+				<a href="#"><img src="{% static 'image/logo.png' %}" width="150" alt="Banca Electronica"></a>
+			</div>
+			<nav>
+				<a href="http://127.0.0.1:8000/">Banca virtual</a>
+                <a href="http://127.0.0.1:8000/adminlogin/">Administrador</a>
+				<a href="http://127.0.0.1:8000/compralogin">Simular compra</a>
+			</nav>
+		</header>
+	<section class="login">
+		<h4>COMPRAR</h4>
+		<form method="POST">
+			{{ form.as_p}}
+			<p>Tipo de moneda
+			{% csrf_token %}
+			<select name="moneda">
+					<option value="Q">Quetzales</option>
+					<option value="$">Dolares</option>
+			</select>
+			</p>
+			<p>Tarjeta de cliente
+            <select name="tareg">
+				{% for op in list %}
+					<option value="{{ op }}">{{ op }}</option>
+				{% endfor %}
+			</select>
+			</p>
+		<button class="datat" type="submit">Ingresar</button>
+	</form>
+		<h6>{{ser}}</h6>
+		<h6>{{serd}}</h6>
+	</section>
 </body>
 </html>
