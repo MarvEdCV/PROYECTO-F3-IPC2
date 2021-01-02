@@ -5,6 +5,10 @@ class Login(forms.ModelForm):
     class Meta:
         model = Administrador
         fields =("nombre","contra")
+class prueba(forms.ModelForm):
+    class Meta:
+        model = Administrador
+        fields =("nombre","contra")
 
 class CrearClienteIndividual(forms.ModelForm):
     class Meta:

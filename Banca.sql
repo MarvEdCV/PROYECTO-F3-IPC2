@@ -1,6 +1,5 @@
 create database Banca;
 use Banca;
-drop database banca;
 create table ADMINISTRADOR(
 Nombre varchar(15) not null,
 contra varchar(20) not null,
