@@ -174,7 +174,7 @@ def crearpuntos(request):
             limite = datos.get("limite")
             puntos = datos.get("puntos")
             if numero[0][2] != None:
-                if numero[0][5] == 1 and limite > 5000 and limite < 7000:
+                if numero[0][5] == 1 and limite >= 5000 and limite <= 7000:
                     insert1 = "insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)
@@ -218,7 +218,7 @@ def crearpuntos(request):
                     }
 
             if numero[0][3] != None:
-                if numero[0][5] == 1 and limite > 10000 and limite < 15000:
+                if numero[0][5] == 1 and limite >= 10000 and limite <= 15000:
                     insert1 = "insert into tarjetadepuntos(numerotarjeta,limite,puntos) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)
@@ -292,7 +292,7 @@ def crearcashback(request):
             limite = datos.get("limite")
             puntos = datos.get("cashback")
             if numero[0][2] != None:
-                if numero[0][5] == 1 and limite > 5000 and limite < 7000:
+                if numero[0][5] == 1 and limite >= 5000 and limite <= 7000:
                     insert1 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)
@@ -336,7 +336,7 @@ def crearcashback(request):
                     }
 
             if numero[0][3] != None:
-                if numero[0][5] == 1 and limite > 10000 and limite < 15000:
+                if numero[0][5] == 1 and limite >= 10000 and limite <= 15000:
                     insert1 = "insert into TARJETADECASHBACK(numerotarjeta,limite,cashback) values(" + str(
                         consult[0]) + "," + str(limite) + "," + str(puntos) + ")"
                     c.execute(insert1)

@@ -56,7 +56,7 @@ def compra(request):
             if tipo[0][2] == 'puntos':
                 a = Tarjetadepuntos.objects.filter(numerotarjeta=Notarjeta).values_list()
                 saldo = str(a[0][1])
-                if request.POST['moneda'] == 'Q' and a[0][1] > monto:
+                if request.POST['moneda'] == 'Q' and a[0][1] >= monto:
                     insert = "insert into COMPRATARJETA (fechacompra,idUsuario,descripcion,monto,numerotarjeta,moneda) Values(" \
                              "'"+str(fecha)+"',"+str(usuario)+",'"+desc+"',"+str(monto)+","+str(Notarjeta)+",'Q')"
                     print(insert)
@@ -74,7 +74,7 @@ def compra(request):
                     print(update)
                     c.execute(insert)
                     c.execute(update)
-                if request.POST['moneda'] == '$' and (float(a[0][1])/7.63) > monto:
+                if request.POST['moneda'] == '$' and (float(a[0][1])/7.63) >= monto:
                     insert = "insert into COMPRATARJETA (fechacompra,idUsuario,descripcion,monto,numerotarjeta,moneda) Values(" \
                              "'"+str(fecha)+"',"+str(usuario)+",'"+desc+"',"+str(monto)+","+str(Notarjeta)+",'$')"
                     print(insert)
@@ -94,7 +94,7 @@ def compra(request):
             if tipo[0][2] == 'cashback':
                 a = Tarjetadecashback.objects.filter(numerotarjeta=Notarjeta).values_list()
                 saldo = str(a[0][1])
-                if request.POST['moneda'] == 'Q' and a[0][1] > monto:
+                if request.POST['moneda'] == 'Q' and a[0][1] >= monto:
                     insert = "insert into COMPRATARJETA (fechacompra,idUsuario,descripcion,monto,numerotarjeta,moneda) Values(" \
                              "'"+str(fecha)+"',"+str(usuario)+",'"+desc+"',"+str(monto)+","+str(Notarjeta)+",'Q')"
                     print(insert)
@@ -109,7 +109,7 @@ def compra(request):
                     print(update)
                     c.execute(insert)
                     c.execute(update)
-                if request.POST['moneda'] == '$' and (float(a[0][1])/7.87) > monto:
+                if request.POST['moneda'] == '$' and (float(a[0][1])/7.87) >= monto:
                     inserts = "insert into COMPRATARJETA (fechacompra,idUsuario,descripcion,monto,numerotarjeta,moneda) Values(" \
                              "'"+str(fecha)+"',"+str(usuario)+",'"+desc+"',"+str(monto)+","+str(Notarjeta)+",'$')"
                     #print(insert)
